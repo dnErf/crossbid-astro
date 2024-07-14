@@ -1,16 +1,23 @@
 ---
+import Main from "@/layouts/Main.astro"
+import AuctionCard from "@/components/auction-card.astro"
+import { supabase } from "@/lib/supabase/web"
 
+
+const { data, error } = await supabase
+  .from('crossbid_auctions')
+  .select()
+
+// console.log(data)
+// console.error(error)
 ---
 
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
-	</head>
-	<body>
-		<h1>Astro</h1>
-	</body>
-</html>
+<Main>
+	<section class="p-8">
+		<div class="grid grid-cols-3">
+			{
+				data.map((auction) => (<AuctionCard key={auction.id} auction={auction} />))
+			}
+		</div>
+	</section>
+</Main>

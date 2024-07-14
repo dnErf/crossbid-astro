@@ -1,0 +1,38 @@
+---
+import { format } from "date-fns"
+import { btn } from "@/lib/styles"
+
+let { auction } = Astro.props
+
+function isBidOver(endDate) {
+    return endDate < new Date()
+}
+---
+
+<div class="border w-72 p-4 rounded-lg space-y-2">
+    <div class="flex justify-center">
+        <!-- image -->
+         <img 
+            src={auction.image_url}
+            alt={auction.name}
+            height="200px"
+            width="200px" 
+         />
+    </div>
+    <h2 class="font-bold">
+        { auction.name }
+    </h2>
+    <p class="text-sm">
+        starting price $ { auction.cents_starting_price / 100 }
+    </p>
+    <p class="text-sm">
+        {
+            isBidOver(auction.end_at)
+            ? ("bidding is over")
+            : (`bid end on: ${format(auction.end_at, "eee M/dd/yy")}`)
+        }
+    </p>
+    <button class={btn}>
+        view bid
+    </button>
+</div>

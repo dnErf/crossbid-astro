@@ -1,5 +1,5 @@
 {
-  "name": "",
+  "name": "crossbid-astro",
   "type": "module",
   "version": "0.0.1",
   "scripts": {
@@ -7,11 +7,30 @@
     "start": "astro dev",
     "build": "astro check && astro build",
     "preview": "astro preview",
-    "astro": "astro"
+    "astro": "astro",
+    "db:push": "drizzle-kit push --config=drizzle.config.js",
+    "db:studio": "drizzle-kit studio --config=drizzle.config.js",
+    "db:init": "node ./src/lib/postgres/init.js"
   },
   "dependencies": {
-    "astro": "^4.11.5",
     "@astrojs/check": "^0.8.0",
+    "@astrojs/cloudflare": "^11.0.1",
+    "@astrojs/react": "^3.6.0",
+    "@astrojs/tailwind": "^5.1.0",
+    "@supabase/ssr": "^0.4.0",
+    "@supabase/supabase-js": "^2.44.3",
+    "@types/react": "^18.3.3",
+    "@types/react-dom": "^18.3.0",
+    "astro": "^4.11.5",
+    "date-fns": "^3.6.0",
+    "flowbite": "^2.4.1",
+    "postgres": "^3.4.4",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "tailwindcss": "^3.4.4",
     "typescript": "^5.5.3"
+  },
+  "devDependencies": {
+    "dotenv": "^16.4.5"
   }
 }

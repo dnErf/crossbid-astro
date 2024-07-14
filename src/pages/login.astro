@@ -1,0 +1,8 @@
+---
+import Main from "@/layouts/Main.astro"
+import AuthForm from "@/components/auth/form.tsx"
+---
+
+<Main>
+    <AuthForm client:only="react" />
+</Main>
